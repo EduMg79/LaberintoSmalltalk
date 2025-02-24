@@ -3,7 +3,7 @@ clase para gestionar las bombas
 "
 Class {
 	#name : 'Decorator',
-	#superclass : 'ElementoMapa',
+	#superclass : 'Hoja',
 	#instVars : [
 		'em'
 	],

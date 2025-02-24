@@ -4,7 +4,7 @@ Clase principal de Habitacion
 "
 Class {
 	#name : 'Habitacion',
-	#superclass : 'ElementoMapa',
+	#superclass : 'Contenedor',
 	#instVars : [
 		'este',
 		'oeste',
