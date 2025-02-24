@@ -47,10 +47,18 @@ Creator >> fabricarBomba [
 ^Bomba new
 ]
 
+{ #category : 'as yet unclassified' }
+Creator >> fabricarEste [
+ ^Este new.
+]
+
 { #category : 'factory method' }
 Creator >> fabricarHabitacion:unNum [
 |hab|
+
+
 hab:=Habitacion new num: unNum.
+hab agregarOrientacion: self fabricarSur; agregarOrientacion: self fabricarNorte; agregarOrientacion: self fabricarSur; agregarOrientacion: self fabricarOeste. 
 hab este: self fabricarPared.
 hab oeste: self fabricarPared.
 hab norte: self fabricarPared.
@@ -70,6 +78,16 @@ Creator >> fabricarLaberinto [
 ^Laberinto new 
 ]
 
+{ #category : 'as yet unclassified' }
+Creator >> fabricarNorte [
+ ^Norte new.
+]
+
+{ #category : 'as yet unclassified' }
+Creator >> fabricarOeste [
+ ^Oeste new.
+]
+
 { #category : 'factory method' }
 Creator >> fabricarPared [
 ^Pared new
@@ -78,4 +96,9 @@ Creator >> fabricarPared [
 { #category : 'factory method' }
 Creator >> fabricarPuerta [ 
 ^Puerta new 
+]
+
+{ #category : 'as yet unclassified' }
+Creator >> fabricarSur [
+ ^Sur new.
 ]
