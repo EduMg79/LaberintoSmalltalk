@@ -10,6 +10,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'gestion orientaciones' }
+Sur >> obtenerElementoOrEn: unaOr [
+^unaOr obtenerElementoOrEn: self.
+]
+
 { #category : 'as yet unclassified' }
 Sur >> ponerElemento:unEm en:unContenedor [
   unContenedor sur:unEm.

@@ -21,6 +21,11 @@ Laberinto >> eliminarHabitacion:unaHabitacion [
 	self hijos remove:unaHabitacion ifAbsent:["no existe ese objeto habitacion"]
 ]
 
+{ #category : 'consulta' }
+Laberinto >> esLaberinto [ 
+^true.
+]
+
 { #category : 'habitaciones' }
 Laberinto >> obtenerHabitacion: unNum [
  ^self hijos detect:[:each | each num = unNum] ifNone: [ nil ].

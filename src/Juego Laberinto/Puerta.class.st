@@ -34,6 +34,11 @@ self abierta
 
 ]
 
+{ #category : 'consulta' }
+Puerta >> esPuerta [ 
+^true.
+]
+
 { #category : 'initialization' }
 Puerta >> initialize [ 
  abierta:=false.

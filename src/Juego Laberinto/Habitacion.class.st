@@ -17,6 +17,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'consulta' }
+Habitacion >> esHabitacion [ 
+^true.
+]
+
 { #category : 'accessing' }
 Habitacion >> este [
 

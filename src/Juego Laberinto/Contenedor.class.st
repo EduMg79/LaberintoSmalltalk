@@ -49,6 +49,11 @@ hijos :=OrderedCollection new.
 orientaciones :=OrderedCollection new.
 ]
 
+{ #category : 'gestion orientaciones' }
+Contenedor >> obtenerElementoOr:unaOr [
+^unaOr obtenerElementoOrEn: self.
+]
+
 { #category : 'accessing' }
 Contenedor >> orientaciones [
 

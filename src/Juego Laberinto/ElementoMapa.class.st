@@ -17,6 +17,31 @@ ElementoMapa >> entrar [
  Transcript show: 'Te has chocado contra una pared'
 ]
 
+{ #category : 'entrar' }
+ElementoMapa >> entrar:alguien [
+ self subclassResponsibility .
+]
+
+{ #category : 'consulta' }
+ElementoMapa >> esHabitacion [
+ ^false.
+]
+
+{ #category : 'consulta' }
+ElementoMapa >> esLaberinto [ 
+^false.
+]
+
+{ #category : 'consulta' }
+ElementoMapa >> esPared [
+^false.
+]
+
+{ #category : 'consulta' }
+ElementoMapa >> esPuerta [
+^false.
+]
+
 { #category : 'accessing' }
 ElementoMapa >> padre [
 

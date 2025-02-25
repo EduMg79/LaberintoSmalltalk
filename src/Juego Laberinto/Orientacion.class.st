@@ -10,6 +10,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'gestion orientaciones' }
+Orientacion >> obtenerElementoOrEn:unContenedor [ 
+ ^unContenedor subclassResponsibility .
+]
+
 { #category : 'as yet unclassified' }
 Orientacion >> ponerElemento:unEM en:unContenedor [
 	self subclassResponsibility.
