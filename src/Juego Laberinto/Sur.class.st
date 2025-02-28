@@ -11,8 +11,8 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
-Sur >> obtenerElementoOrEn: unaOr [
-^unaOr obtenerElementoOrEn: self.
+Sur >> obtenerElementoOr: unContenedor [
+^unContenedor sur.
 ]
 
 { #category : 'as yet unclassified' }

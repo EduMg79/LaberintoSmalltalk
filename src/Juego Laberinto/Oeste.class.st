@@ -11,11 +11,11 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
-Oeste >> obtenerElementoOrEn: unaOr [
-^unaOr obtenerElementoOrEn: self.
+Oeste >> obtenerElementoOr: unContenedor [
+^unContenedor oeste.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gestion orientaciones' }
 Oeste >> ponerElemento:unEm en:unContenedor [
   unContenedor oeste:unEm.
 ]

@@ -11,12 +11,12 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
-Este >> obtenerElementoOrEn: unaOr [
-^unaOr obtenerElementoOrEn: self.
+Este >> obtenerElementoOr: unContenedor [
+^unContenedor este.
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gestion orientaciones' }
 Este >> ponerElemento:unEm en:unContenedor [
   unContenedor este:unEm.
 ]

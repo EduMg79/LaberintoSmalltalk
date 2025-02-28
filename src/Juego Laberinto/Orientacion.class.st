@@ -11,11 +11,11 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
-Orientacion >> obtenerElementoOrEn:unContenedor [ 
+Orientacion >> obtenerElementoOr:unContenedor [ 
  ^unContenedor subclassResponsibility .
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gestion orientaciones' }
 Orientacion >> ponerElemento:unEM en:unContenedor [
 	self subclassResponsibility.
 ]

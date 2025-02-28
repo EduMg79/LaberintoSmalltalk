@@ -2,12 +2,25 @@ Class {
 	#name : 'LaberintoTest',
 	#superclass : 'TestCase',
 	#instVars : [
-		'juego'
+		'juego',
+		'fm'
 	],
 	#category : 'Juego Laberinto-Pruebas',
 	#package : 'Juego Laberinto',
 	#tag : 'Pruebas'
 }
+
+{ #category : 'accessing' }
+LaberintoTest >> fm [
+
+	^ fm
+]
+
+{ #category : 'accessing' }
+LaberintoTest >> fm: anObject [
+
+	fm := anObject
+]
 
 { #category : 'accessing' }
 LaberintoTest >> juego [
@@ -23,7 +36,7 @@ LaberintoTest >> juego: anObject [
 
 { #category : 'running' }
 LaberintoTest >> setUp [
-	| fm |
+
 	super setUp.
   juego:=Juego new.
   fm:=Creator new.
@@ -39,33 +52,6 @@ LaberintoTest >> setUp [
 { #category : 'tests' }
 LaberintoTest >> testHabitaciones [
 
-|hab1 hab2 pt12 norte sur este oeste unFM |
-
-
-hab1:= self juego obtenerHabitacion: 1.
-hab2:= self juego obtenerHabitacion: 2.
-
-self assert: hab1 esHabitacion. "hab1 class= Habitacion"
-self assert: hab2 esHabitacion.
-
-self assert: hab1 norte esPared . "hab1 obtenerElementoOr: norte. norte variable temporal"
-
-
-pt12:= hab1 sur. "hab1 obtenerElementoOR:sur"
-self assert: pt12 esPuerta.
-self assert: hab2 esPuerta.
-self assert: pt12 abierta not.
-
-
-
-
-
-
-]
-
-{ #category : 'tests' }
-LaberintoTest >> testHabitaciones:fm [
-
 |hab1 hab2 pt12 norte sur este oeste  |
 
 	norte:=fm fabricarNorte.
@@ -78,21 +64,21 @@ hab2:= self juego obtenerHabitacion: 2.
 
 self assert: hab1 esHabitacion. "hab1 class= Habitacion"
 self assert: hab2 esHabitacion.
-self assert: (hab1 obtenerElementoOrEn: norte) esPared .
-self assert: (hab1 obtenerElementoOrEn: este ) esPared .
-self assert: (hab1 obtenerElementoOrEn: oeste) esPared .
+self assert: (hab1 obtenerElementoOr: norte) esPared .
+self assert: (hab1 obtenerElementoOr: este ) esPared .
+self assert: (hab1 obtenerElementoOr: oeste) esPared .
 
-self assert: (hab2 obtenerElementoOrEn: sur) esPared .
-self assert: (hab2 obtenerElementoOrEn: este) esPared .
-self assert: (hab2 obtenerElementoOrEn: oeste) esPared .
+self assert: (hab2 obtenerElementoOr: sur) esPared .
+self assert: (hab2 obtenerElementoOr: este) esPared .
+self assert: (hab2 obtenerElementoOr: oeste) esPared .
 self assert: hab1 norte esPared . "hab1 obtenerElementoOr: norte. norte variable temporal"
 
 
 pt12:= hab1 sur. "hab1 obtenerElementoOR:sur"
 self assert: pt12 esPuerta.
-self assert: (hab2 obtenerElementoOrEn:norte) esPuerta.
+self assert: (hab2 obtenerElementoOr:norte) esPuerta.
 self assert: pt12 abierta not.
-self assert: pt12 equals: (hab2 obtenerElementoOrEn:norte).
+self assert: pt12 equals: (hab2 obtenerElementoOr:norte).
 
 
 
