@@ -51,34 +51,33 @@ LaberintoTest >> setUp [
 
 { #category : 'tests' }
 LaberintoTest >> testHabitaciones [
-
-|hab1 hab2 pt12 norte sur este oeste  |
-
+|hab1 hab2 pt12 norte sur este oeste|
+	
 	norte:=fm fabricarNorte.
 	sur:=fm fabricarSur.
 	este:=fm fabricarEste.
 	oeste:=fm fabricarOeste.
 	
-hab1:= self juego obtenerHabitacion: 1.
-hab2:= self juego obtenerHabitacion: 2.
+	hab1:=self juego obtenerHabitacion:1.
+	hab2:=self juego obtenerHabitacion:2.
+	
+	self assert:hab1 esHabitacion. 
+	self assert:hab2 esHabitacion.
+	
+	self assert: hab1 norte esPared. "hab1 obtenerElementoOr:norte. norte variable temporal"
+	"..."
+	self assert: (hab1 obtenerElementoOr:norte) esPared.
+	self assert: (hab1 obtenerElementoOr:este) esPared.
+	self assert: (hab1 obtenerElementoOr:oeste) esPared.
 
-self assert: hab1 esHabitacion. "hab1 class= Habitacion"
-self assert: hab2 esHabitacion.
-self assert: (hab1 obtenerElementoOr: norte) esPared .
-self assert: (hab1 obtenerElementoOr: este ) esPared .
-self assert: (hab1 obtenerElementoOr: oeste) esPared .
-
-self assert: (hab2 obtenerElementoOr: sur) esPared .
-self assert: (hab2 obtenerElementoOr: este) esPared .
-self assert: (hab2 obtenerElementoOr: oeste) esPared .
-self assert: hab1 norte esPared . "hab1 obtenerElementoOr: norte. norte variable temporal"
-
-
-pt12:= hab1 sur. "hab1 obtenerElementoOR:sur"
-self assert: pt12 esPuerta.
-self assert: (hab2 obtenerElementoOr:norte) esPuerta.
-self assert: pt12 abierta not.
-self assert: pt12 equals: (hab2 obtenerElementoOr:norte).
+	self assert: (hab2 obtenerElementoOr:sur) esPared.
+	self assert: (hab2 obtenerElementoOr:este) esPared.
+	self assert: (hab2 obtenerElementoOr:oeste) esPared.
+	
+	pt12:=hab1 obtenerElementoOr:sur. "hab1 obtenerElementoOr:sur"
+	self assert:pt12 esPuerta.
+	self assert:(hab2 obtenerElementoOr:norte)  esPuerta.
+	self assert:pt12 abierta not.
 
 
 

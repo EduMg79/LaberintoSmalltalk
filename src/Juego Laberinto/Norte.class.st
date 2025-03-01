@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
-Norte >> obtenerElementoOr: unContenedor [
+Norte >> obtenerElementoOrEn: unContenedor [
 ^unContenedor norte .
 ]
 

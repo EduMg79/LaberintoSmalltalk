@@ -51,7 +51,7 @@ orientaciones :=OrderedCollection new.
 
 { #category : 'gestion orientaciones' }
 Contenedor >> obtenerElementoOr:unaOr [
-^unaOr obtenerElementoOr: self.
+^unaOr obtenerElementoOrEn: self.
 ]
 
 { #category : 'accessing' }

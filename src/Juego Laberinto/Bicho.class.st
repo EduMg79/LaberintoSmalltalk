@@ -31,6 +31,12 @@ Bicho >> esPerezoso [
 ]
 
 { #category : 'initialization' }
+Bicho >> iniAgresivo [
+self modo: Agresivo new.
+self poder: 5.
+]
+
+{ #category : 'initialization' }
 Bicho >> iniPerezoso [
 self modo: Perezoso new.
 self poder: 1.
