@@ -70,3 +70,10 @@ Contenedor >> orientaciones: anObject [
 Contenedor >> ponerEnOr: unaOr elemento: unEM [
 unaOr ponerElemento: unEM en: self. 
 ]
+
+{ #category : 'recorrido' }
+Contenedor >> recorrer: unBloque [
+ unBloque value:self.
+self hijos do: [ :each | each recorrer:unBloque ].
+self orientaciones recorrer:unBloque contenedor:self.
+]

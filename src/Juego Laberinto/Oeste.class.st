@@ -19,3 +19,8 @@ Oeste >> obtenerElementoOrEn:unContenedor [
 Oeste >> ponerElemento:unEm en:unContenedor [
   unContenedor oeste:unEm.
 ]
+
+{ #category : 'recorrido' }
+Oeste >> recorrer: unBloque contenedor:unContenedor [
+unContenedor oeste recorrer:unBloque.
+]

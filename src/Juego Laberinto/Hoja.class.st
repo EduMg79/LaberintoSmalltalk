@@ -5,3 +5,8 @@ Class {
 	#package : 'Juego Laberinto',
 	#tag : 'Laberinto'
 }
+
+{ #category : 'recorrido' }
+Hoja >> recorrer:unBloque [
+unBloque value:self
+]
