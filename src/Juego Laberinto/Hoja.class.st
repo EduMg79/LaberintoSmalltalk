@@ -6,7 +6,8 @@ Class {
 	#tag : 'Laberinto'
 }
 
-{ #category : 'recorrido' }
-Hoja >> recorrer:unBloque [
-unBloque value:self
+{ #category : 'printing' }
+Hoja >> printOn: aStream [
+aStream nextPutAll: 'laberinto'
+
 ]

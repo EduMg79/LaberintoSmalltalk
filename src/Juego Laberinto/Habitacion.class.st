@@ -17,6 +17,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'caminar' }
+Habitacion >> entrar:alguien [
+ Transcript show: alguien printString; nextPutAll: 'esta en' ; nextPutAll:self  printString ;cr. 
+]
+
 { #category : 'consulta' }
 Habitacion >> esHabitacion [ 
 ^true.
@@ -68,6 +73,11 @@ Habitacion >> oeste [
 Habitacion >> oeste: anObject [
 
 	oeste := anObject
+]
+
+{ #category : 'printing' }
+Habitacion >> printOn: aStream [
+aStream nextPutAll: 'hab' ; nextPutAll: self num asString.
 ]
 
 { #category : 'accessing' }

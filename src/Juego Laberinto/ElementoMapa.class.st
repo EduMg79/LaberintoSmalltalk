@@ -13,11 +13,6 @@ Class {
 }
 
 { #category : 'entrar' }
-ElementoMapa >> entrar [
- Transcript show: 'Te has chocado contra una pared'
-]
-
-{ #category : 'entrar' }
 ElementoMapa >> entrar:alguien [
  self subclassResponsibility .
 ]
@@ -56,5 +51,5 @@ ElementoMapa >> padre: anObject [
 
 { #category : 'recorrido' }
 ElementoMapa >> recorrer:unBloque [
-  self subclassResponsibility .
+  unBloque value:self .
 ]
