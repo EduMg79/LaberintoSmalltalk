@@ -11,6 +11,14 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
+Este >> caminar:unBicho [ 
+|pos|
+pos :=unBicho posicion .
+pos este entrar:unBicho .
+
+]
+
+{ #category : 'gestion orientaciones' }
 Este >> obtenerElementoOrEn: unContenedor [
 ^unContenedor este.
 

@@ -11,6 +11,11 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
+Orientacion >> caminar:unBicho [ 
+self subclassResponsibility .
+]
+
+{ #category : 'gestion orientaciones' }
 Orientacion >> ponerElemento:unEM en:unContenedor [
 	self subclassResponsibility.
 ]

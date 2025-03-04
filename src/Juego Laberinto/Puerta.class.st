@@ -41,10 +41,16 @@ abierta:=false.
 
 { #category : 'caminar' }
 Puerta >> entrar:alguien [
-	self abierta 
-	ifTrue:[ alguien posicion = self lado1 ifTrue:[self lado2 entrar:alguien] ifFalse:[self lado1 entrar:alguien] ]
-	ifFalse:[ Transcript show: 'La puerta esta cerrada';cr].
 
+	self abierta 
+	ifTrue:[
+		alguien posicion = self lado1 ifTrue:[
+			self lado2 entrar:alguien
+			] ifFalse:[
+			self lado1 entrar:alguien
+			]
+		]
+	ifFalse:[Transcript show:'Te has chocado con la puerta';cr.].
 ]
 
 { #category : 'consulta' }

@@ -6,7 +6,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'laberinto',
-		'bichos'
+		'bichos',
+		'hilos'
 	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
@@ -311,9 +312,22 @@ Juego >> eliminarBicho:unBicho [
  self bichos  remove: unBicho ifAbsent:{Transcript show: 'no existen bichos';cr} .
 ]
 
+{ #category : 'accessing' }
+Juego >> hilos [
+
+	^ hilos
+]
+
+{ #category : 'accessing' }
+Juego >> hilos: anObject [
+
+	hilos := anObject
+]
+
 { #category : 'initialization' }
 Juego >> initialize [ 
- bichos:=OrderedCollection new.
+bichos:=OrderedCollection new.
+hilos:= Dictionary new.
 ]
 
 { #category : 'accessing' }
@@ -328,8 +342,22 @@ Juego >> laberinto: anObject [
 	laberinto := anObject
 ]
 
+{ #category : 'gestion bichos' }
+Juego >> lanzarBichos:unBicho [
+	| proceso |
+	 proceso:=[ [unBicho estaVivo] whileTrue:[unBicho actua]] fork.
+ 	self hilos at:unBicho put:proceso.
+
+
+]
+
 { #category : 'accessing' }
 Juego >> obtenerHabitacion:unNum [
 "delgar y devolver lo que le de laberinto"
  ^self laberinto obtenerHabitacion:unNum.
+]
+
+{ #category : 'gestion bichos' }
+Juego >> terminarBicho:unBicho [
+unBicho vidas: 0.
 ]

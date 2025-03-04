@@ -11,6 +11,13 @@ Class {
 }
 
 { #category : 'gestion orientaciones' }
+Norte >> caminar:unBicho [ 
+|pos|
+pos :=unBicho posicion .
+pos norte entrar:unBicho .
+]
+
+{ #category : 'gestion orientaciones' }
 Norte >> obtenerElementoOrEn: unContenedor [
 ^unContenedor norte .
 ]

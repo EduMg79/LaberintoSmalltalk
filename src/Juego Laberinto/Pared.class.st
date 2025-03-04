@@ -10,21 +10,10 @@ Class {
 }
 
 { #category : 'entrar' }
-Pared >> entrar [ 
- Transcript  show:'Te has chocado con una pared';cr.
-]
+Pared >> entrar:alguien [
 
-{ #category : 'entrar' }
-Pared >> entrar: alguien [
-self abierta
-ifTrue:[
-	alguien posicion self lado1 ifTrue: [ 
-		self lado2 entrar: alguien
-		 ]ifFalse: [ 
-		self lado1 entrar: alguien 
-		 ]
-	]
-ifFalse:[ Transcript show: alguien printString ; nextPutAll: 'se ha chocao con una pared' ;cr].
+	"deberemos  indicar quien entra"
+	Transcript show:alguien printString ;nextPutAll: ' ha chocado con una pared';cr
 ]
 
 { #category : 'consulta' }
