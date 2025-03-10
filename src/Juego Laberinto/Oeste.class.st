@@ -5,10 +5,24 @@ Oritentacion oeste
 Class {
 	#name : 'Oeste',
 	#superclass : 'Orientacion',
+	#classVars : [
+		'UnicaInstancia'
+	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
 	#tag : 'Laberinto'
 }
+
+{ #category : 'accessing' }
+Oeste class >> default [
+UnicaInstancia isNil ifTrue:[UnicaInstancia:=super new].
+^UnicaInstancia
+]
+
+{ #category : 'instance creation' }
+Oeste class >> new [
+self error: 'no se puede crear objeto'.
+]
 
 { #category : 'gestion orientaciones' }
 Oeste >> caminar:unBicho [ 
