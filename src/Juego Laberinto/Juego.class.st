@@ -23,11 +23,13 @@ self laberinto abrirPuertas .
 { #category : 'gestion bichos' }
 Juego >> agregarBicho:unBicho [
  self bichos add: unBicho .
+unBicho juego:self.
 ]
 
 { #category : 'as yet unclassified' }
 Juego >> agregarPersonaje:unaCadena [
  self person: (Personaje new nombre:unaCadena) .
+self person juego: self.
 self laberinto entrar: self person.
 ]
 
@@ -41,6 +43,14 @@ Juego >> bichos [
 Juego >> bichos: anObject [
 
 	bichos := anObject
+]
+
+{ #category : 'ataques' }
+Juego >> buscarPersonaje:unBicho [
+	|posbicho pospersonaje|
+	posbicho:=unBicho posicion.
+	pospersonaje :=self person posicion.
+	posbicho=pospersonaje ifTrue: [ self person esAtacadoPor:unBicho ].
 ]
 
 { #category : 'as yet unclassified' }
@@ -359,12 +369,17 @@ Juego >> lanzarBicho:unBicho [
 ]
 
 { #category : 'gestion bichos' }
-Juego >> lanzarBichos:unBicho [
-	| proceso |
-	 proceso:=[ [unBicho estaVivo] whileTrue:[unBicho actua]] fork.
- 	self hilos at:unBicho put:proceso.
+Juego >> lanzarBichos [
+
+	self bichos do:[:each | self lanzarBicho:each]
 
 
+]
+
+{ #category : 'ataques' }
+Juego >> muerePersonaje [
+ Transcript show: 'fin del juego';cr.
+ self terminarBichos .
 ]
 
 { #category : 'accessing' }
@@ -387,10 +402,12 @@ Juego >> person: anObject [
 
 { #category : 'gestion bichos' }
 Juego >> terminarBicho:unBicho [
+Transcript show:unBicho printString ; nextPutAll: ' muere';cr.
 unBicho vidas: 0.
 ]
 
 { #category : 'gestion bichos' }
-Juego >> terminarBichos:unBicho [
-unBicho vidas: 0.
+Juego >> terminarBichos [
+
+	self bichos do:[:each | self terminarBicho:each]
 ]

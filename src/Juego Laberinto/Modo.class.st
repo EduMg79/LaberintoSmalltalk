@@ -20,7 +20,7 @@ self atacar:unBicho .
 
 { #category : 'as yet unclassified' }
 Modo >> atacar:unBicho [
- "no hacer na"
+ unBicho atacar.
 ]
 
 { #category : 'as yet unclassified' }

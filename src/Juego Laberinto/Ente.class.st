@@ -3,11 +3,12 @@ Interfaz común de los entes del juego
 "
 Class {
 	#name : 'Ente',
-	#superclass : 'ElementoMapa',
+	#superclass : 'Object',
 	#instVars : [
 		'poder',
 		'vidas',
-		'posicion'
+		'posicion',
+		'juego'
 	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
@@ -18,6 +19,18 @@ Class {
 Ente >> initialize [ 
  vidas:=5.
  poder:=1.
+]
+
+{ #category : 'accessing' }
+Ente >> juego [
+
+	^ juego
+]
+
+{ #category : 'accessing' }
+Ente >> juego: anObject [
+
+	juego := anObject
 ]
 
 { #category : 'accessing' }
