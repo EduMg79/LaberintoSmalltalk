@@ -15,8 +15,8 @@ Class {
 
 { #category : 'instance creation' }
 Este class >> default [
-UnicaInstancia isNil ifTrue:[UnicaInstancia:=super new].
-^UnicaInstancia
+UnicaInstancia ifNil: [ UnicaInstancia:=super new].
+	^UnicaInstancia
 
 ]
 

@@ -45,6 +45,15 @@ Juego >> bichos: anObject [
 	bichos := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+Juego >> buscarBicho [
+	|bicho|
+	
+	bicho:= self bichos  detect:[:each | each estaVivo and:[each posicion = self person posicion]] ifNone:[nil]. "mensajes 10 y 11"
+	
+	bicho ifNotNil:[bicho esAtacadoPor: self person ].
+]
+
 { #category : 'ataques' }
 Juego >> buscarPersonaje:unBicho [
 	|posbicho pospersonaje|
@@ -329,6 +338,20 @@ Juego >> eliminarBicho:unBicho [
  self bichos  remove: unBicho ifAbsent:{Transcript show: 'no existen bichos';cr} .
 ]
 
+{ #category : 'as yet unclassified' }
+Juego >> estanTodosLosBichosMuertos [
+ |bicho|
+
+bicho := self bichos detect: [ :each | each estaVivo ] ifNone: [ nil ].
+(bicho isNil and:[self person estaVivo ]) ifTrue: [ self ganaPersonaje ].
+
+]
+
+{ #category : 'as yet unclassified' }
+Juego >> ganaPersonaje [
+ Transcript show: 'Ha ganado el personaje';cr.
+]
+
 { #category : 'accessing' }
 Juego >> hilos [
 
@@ -361,7 +384,8 @@ Juego >> laberinto: anObject [
 
 { #category : 'gestion bichos' }
 Juego >> lanzarBicho:unBicho [
-	| proceso |
+		| proceso |
+	Transcript show:unBicho printString ; nextPutAll: ' se activa';cr.
 	 proceso:=[ [unBicho estaVivo] whileTrue:[unBicho actua]] fork.
  	self hilos at:unBicho put:proceso.
 
@@ -378,7 +402,7 @@ Juego >> lanzarBichos [
 
 { #category : 'ataques' }
 Juego >> muerePersonaje [
- Transcript show: 'fin del juego';cr.
+ Transcript show: 'fin del juego Ganan los bichos';cr.
  self terminarBichos .
 ]
 
@@ -402,8 +426,10 @@ Juego >> person: anObject [
 
 { #category : 'gestion bichos' }
 Juego >> terminarBicho:unBicho [
-Transcript show:unBicho printString ; nextPutAll: ' muere';cr.
+Transcript show:unBicho printString ; nextPutAll: 'muere';cr.
 unBicho vidas: 0.
+
+self estanTodosLosBichosMuertos.
 ]
 
 { #category : 'gestion bichos' }

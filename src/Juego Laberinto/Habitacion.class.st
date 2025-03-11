@@ -19,7 +19,9 @@ Class {
 
 { #category : 'caminar' }
 Habitacion >> entrar:alguien [
- Transcript show: alguien printString; nextPutAll: 'esta en' ; nextPutAll:self  printString ;cr. 
+Transcript show:alguien printString; nextPutAll: ' esta en'; nextPutAll: self printString ;cr.
+	
+	alguien posicion:self.
 ]
 
 { #category : 'consulta' }

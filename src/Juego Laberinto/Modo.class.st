@@ -13,7 +13,7 @@ Class {
 { #category : 'as yet unclassified' }
 Modo >> actua: unBicho [
 "template method"
- "self dormir: unBicho".
+ self dormir: unBicho.
 self caminar: unBicho.
 self atacar:unBicho .
 ]

@@ -15,8 +15,8 @@ Class {
 
 { #category : 'accessing' }
 Sur class >> default [
-UnicaInstancia isNil ifTrue:[UnicaInstancia:=super new].
-^UnicaInstancia
+UnicaInstancia ifNil: [ UnicaInstancia:=super new].
+	^UnicaInstancia
 ]
 
 { #category : 'instance creation' }

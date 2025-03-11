@@ -32,9 +32,9 @@ Bicho >> esPerezoso [
  ^self modo esPerezoso .
 ]
 
-{ #category : 'consulta' }
-Bicho >> estaVivo [
- ^self vidas>0. 
+{ #category : 'as yet unclassified' }
+Bicho >> heMuerto [
+ self juego terminarBicho: self.
 ]
 
 { #category : 'initialization' }
