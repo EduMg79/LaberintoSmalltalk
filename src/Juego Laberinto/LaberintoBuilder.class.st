@@ -10,6 +10,62 @@ Class {
 	#tag : 'Builder'
 }
 
+{ #category : 'factory method' }
+LaberintoBuilder >> fabricarArmario:unNum en:unContenedor [
+|arm|
+
+
+	arm:=Armario new num:unNum.
+	arm agregarOrientacion: self fabricarNorte; agregarOrientacion: self fabricarSur; agregarOrientacion:self fabricarEste; agregarOrientacion:self fabricarOeste.
+	
+	arm orientaciones do:[:each | arm ponerEnOr:each elemento:self fabricarPared].
+	arm este:self fabricarPared.
+	arm oeste:self fabricarPared.
+	arm norte:self fabricarPared.
+	arm sur:self fabricarPared.
+	unContenedor agregarHijo: arm.
+	self laberinto agregarHabitacion: arm.
+	^arm
+
+]
+
+{ #category : 'fm bicho' }
+LaberintoBuilder >> fabricarBichoAgresivo [
+	|bicho|
+	bicho:=Bicho new.
+	bicho modo: Agresivo new.
+	bicho poder:5.
+	bicho vidas:3.
+	^bicho
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoBuilder >> fabricarBichoModo:unModo posicion: unNum [
+|hab bicho|
+hab:= self laberinto obtenerHabitacion: unNum .
+bicho:= self perform: ('FabricarBicho',unModo ) asSymbol .
+hab entrar: bicho.
+self juego agregarBicho: bicho.
+"strModo='Agresivo' ifTrue:{bicho:=self fabricarBichoAgresivo:hab}" 
+]
+
+{ #category : 'fm bicho' }
+LaberintoBuilder >> fabricarBichoPerezoso [
+	|bicho|
+	bicho:=Bicho new.
+	bicho modo: Perezoso new.
+	bicho poder:1.
+	bicho vidas:2.
+	^bicho
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoBuilder >> fabricarBombaEn:unContenedor [
+|bmb|
+bmb:= Bomba new.
+unContenedor agregarHijo: bmb.
+]
+
 { #category : 'as yet unclassified' }
 LaberintoBuilder >> fabricarEste [
  ^Este default.
@@ -105,4 +161,9 @@ LaberintoBuilder >> laberinto [
 LaberintoBuilder >> laberinto: anObject [
 
 	laberinto := anObject
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoBuilder >> obtenerJuego [
+ ^self juego.
 ]

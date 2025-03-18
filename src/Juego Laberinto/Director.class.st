@@ -56,8 +56,9 @@ Director >> fabricarLaberintoRecursivo:unDic en:padre [
 | con |
 "contenedores"
 (unDic at:'tipo')='habitacion' ifTrue:[con:=self builder fabricarHabitacion:(unDic at:'num')].
-
+(unDic at:'tipo')='armario' ifTrue:[con:=self builder fabricarArmario:(unDic at:'num')en:padre].
 "hojas"
+(unDic at:'tipo')='bomba' ifTrue: [self fabricarBombaEn: padre].
 
 (unDic at:'hijos' ifAbsent:[^nil]) do:[:each | self fabricarLaberintoRecursivo:each en:con].
 
@@ -71,6 +72,11 @@ Director >> iniBuilder [
 { #category : 'as yet unclassified' }
 Director >> leerArchivo:unArchivo [
 self dict:(unArchivo asFileReference readStreamDo: [ :readStream | (NeoJSONReader on: readStream) next ]).
+]
+
+{ #category : 'as yet unclassified' }
+Director >> obtenerJuego [ 
+ ^self builder obtenerJuego .
 ]
 
 { #category : 'as yet unclassified' }

@@ -31,6 +31,25 @@ Contenedor >> eliminarHijo:unEM [
  self hijos remove: unEM ifAbsent:{"no eciste ese objeto"}.
 ]
 
+{ #category : 'caminar' }
+Contenedor >> entrar:alguien [
+Transcript show:alguien printString; nextPutAll: ' esta en'; nextPutAll: self printString ;cr.
+	
+	alguien posicion:self.
+]
+
+{ #category : 'accessing' }
+Contenedor >> este [
+
+	^ este
+]
+
+{ #category : 'accessing' }
+Contenedor >> este: anObject [
+
+	este := anObject
+]
+
 { #category : 'accessing' }
 Contenedor >> hijos [
 
@@ -49,6 +68,18 @@ hijos :=OrderedCollection new.
 orientaciones :=OrderedCollection new.
 ]
 
+{ #category : 'accessing' }
+Contenedor >> norte [
+
+	^ norte
+]
+
+{ #category : 'accessing' }
+Contenedor >> norte: anObject [
+
+	norte := anObject
+]
+
 { #category : 'gestion orientaciones' }
 Contenedor >> obtenerElementoOr:unaOr [
 ^unaOr obtenerElementoOrEn: self.
@@ -60,6 +91,18 @@ Contenedor >> obtenerOrientacion [
 "self orientaciones size"
 ind:=(1 to: self orientaciones size) atRandom .
 ^self orientaciones at: ind.
+]
+
+{ #category : 'accessing' }
+Contenedor >> oeste [
+
+	^ oeste
+]
+
+{ #category : 'accessing' }
+Contenedor >> oeste: anObject [
+
+	oeste := anObject
 ]
 
 { #category : 'accessing' }
@@ -84,4 +127,16 @@ Contenedor >> recorrer: unBloque [
  unBloque value:self.
 self hijos do: [ :each | each recorrer:unBloque ].
 self orientaciones  do: [:each | each recorrer:unBloque contenedor:self].
+]
+
+{ #category : 'accessing' }
+Contenedor >> sur [
+
+	^ sur
+]
+
+{ #category : 'accessing' }
+Contenedor >> sur: anObject [
+
+	sur := anObject
 ]
