@@ -24,6 +24,26 @@ Cuadrado >> este: anObject [
 	este := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+Cuadrado >> irAlEste:alguien [
+ self este entrar: alguien.
+]
+
+{ #category : 'as yet unclassified' }
+Cuadrado >> irAlNorte:alguien [
+ self norte entrar: alguien.
+]
+
+{ #category : 'as yet unclassified' }
+Cuadrado >> irAlOeste:alguien [
+ self oeste entrar: alguien.
+]
+
+{ #category : 'as yet unclassified' }
+Cuadrado >> irAlSur:alguien [
+ self sur entrar: alguien.
+]
+
 { #category : 'accessing' }
 Cuadrado >> norte [
 

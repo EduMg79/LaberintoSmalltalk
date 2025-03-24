@@ -19,6 +19,26 @@ Forma >> initialize [
 	orientaciones:=OrderedCollection new.
 ]
 
+{ #category : 'as yet unclassified' }
+Forma >> irAlEste:alguien [
+self subclassResponsibility .
+]
+
+{ #category : 'as yet unclassified' }
+Forma >> irAlNorte:alguien [
+ self subclassResponsibility .
+]
+
+{ #category : 'as yet unclassified' }
+Forma >> irAlOeste:alguien [
+self subclassResponsibility .
+]
+
+{ #category : 'as yet unclassified' }
+Forma >> irAlSur:alguien [
+self subclassResponsibility .
+]
+
 { #category : 'gestion orientaciones' }
 Forma >> obtenerElementoOr:unaOR [ 
 	^unaOR obtenerElementoOrEn:self.
@@ -31,6 +51,11 @@ Forma >> obtenerOrientacion [
 	^self orientaciones at:ind.
 ]
 
+{ #category : 'as yet unclassified' }
+Forma >> obtenerOrientaciones [ 
+ ^self orientaciones.
+]
+
 { #category : 'accessing' }
 Forma >> orientaciones [
 
@@ -41,4 +66,9 @@ Forma >> orientaciones [
 Forma >> orientaciones: anObject [
 
 	orientaciones := anObject
+]
+
+{ #category : 'gestion orientaciones' }
+Forma >> ponerEnOr: unaOr elemento: unEM [
+unaOr ponerElemento: unEM en: self. 
 ]

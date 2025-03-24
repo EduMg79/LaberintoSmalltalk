@@ -50,3 +50,9 @@ Laberinto >> esLaberinto [
 Laberinto >> obtenerHabitacion: unNum [
  ^self hijos detect:[:each | each num = unNum] ifNone: [ nil ].
 ]
+
+{ #category : 'recorrido' }
+Laberinto >> recorrer: unBloque [
+ unBloque value:self.
+self hijos do: [ :each | each recorrer:unBloque ].
+]

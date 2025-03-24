@@ -30,7 +30,7 @@ self error: 'no se puede crear objeto'.
 Este >> caminar:unBicho [ 
 |pos|
 pos :=unBicho posicion .
-pos este entrar:unBicho .
+pos irAlEste:unBicho .
 
 ]
 

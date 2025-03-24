@@ -68,7 +68,9 @@ Director >> fabricarLaberintoRecursivo:unDic en:padre [
 
 { #category : 'initi' }
 Director >> iniBuilder [ 
- self builder:LaberintoBuilder new.
+{  self dict at:'forma' }='cuadrado'  ifTrue: [ self builder:LaberintoBuilder new ].
+{  self dict at:'forma' }='rombo'  ifTrue: [ self builder:LaberintoBuilderRombo new ].
+self builder: LaberintoBuilder new.
 ]
 
 { #category : 'as yet unclassified' }
@@ -87,4 +89,6 @@ self leerArchivo:unArchivo.
 	self iniBuilder.
 	self fabricarLaberinto .
 	self fabricarJuego .
+	self fabricarBomba .
+	
 ]
