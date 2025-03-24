@@ -5,13 +5,6 @@ Clase principal de Habitacion
 Class {
 	#name : 'Habitacion',
 	#superclass : 'Contenedor',
-	#instVars : [
-		'este',
-		'oeste',
-		'num',
-		'norte',
-		'sur'
-	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
 	#tag : 'Laberinto'
@@ -40,12 +33,6 @@ Habitacion >> irAlOEste:alguien [
 { #category : 'as yet unclassified' }
 Habitacion >> irAlSur:alguien [
  self sur entrar: alguien.
-]
-
-{ #category : 'accessing' }
-Habitacion >> num [
-
-	^ num
 ]
 
 { #category : 'accessing' }

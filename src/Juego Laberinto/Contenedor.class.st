@@ -7,7 +7,13 @@ Class {
 	#superclass : 'ElementoMapa',
 	#instVars : [
 		'hijos',
-		'orientaciones'
+		'orientaciones',
+		'este',
+		'oeste',
+		'num',
+		'norte',
+		'sur',
+		'forma'
 	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
@@ -51,6 +57,18 @@ Contenedor >> este: anObject [
 ]
 
 { #category : 'accessing' }
+Contenedor >> forma [
+
+	^ forma
+]
+
+{ #category : 'accessing' }
+Contenedor >> forma: anObject [
+
+	forma := anObject
+]
+
+{ #category : 'accessing' }
 Contenedor >> hijos [
 
 	^ hijos
@@ -78,6 +96,12 @@ Contenedor >> norte [
 Contenedor >> norte: anObject [
 
 	norte := anObject
+]
+
+{ #category : 'accessing' }
+Contenedor >> num [
+
+	^ num
 ]
 
 { #category : 'gestion orientaciones' }

@@ -56,11 +56,13 @@ Director >> fabricarLaberintoRecursivo:unDic en:padre [
 | con |
 "contenedores"
 (unDic at:'tipo')='habitacion' ifTrue:[con:=self builder fabricarHabitacion:(unDic at:'num')].
-(unDic at:'tipo')='armario' ifTrue:[con:=self builder fabricarArmario:(unDic at:'num')en:padre].
-"hojas"
-(unDic at:'tipo')='bomba' ifTrue: [self fabricarBombaEn: padre].
+(unDic at:'tipo')='armario' ifTrue:[con:=self builder fabricarArmario:(unDic at:'num') en:padre].
+
+"hojas: hay que indicar el contenedor donde va la hoja"
+(unDic at:'tipo')='bomba' ifTrue:[self builder fabricarBombaEn:padre].
 
 (unDic at:'hijos' ifAbsent:[^nil]) do:[:each | self fabricarLaberintoRecursivo:each en:con].
+
 
 ]
 
