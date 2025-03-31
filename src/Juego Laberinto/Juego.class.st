@@ -8,7 +8,8 @@ Class {
 		'laberinto',
 		'bichos',
 		'hilos',
-		'person'
+		'person',
+		'prototipo'
 	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
@@ -67,6 +68,11 @@ Juego >> cerrarPuertas [
 self laberinto cerrarPuertas .
 ]
 
+{ #category : 'as yet unclassified' }
+Juego >> clonarLaberinto [
+ 
+]
+
 { #category : 'laberinto' }
 Juego >> crearLaberinto2Habitaciones [
 
@@ -108,8 +114,8 @@ Juego >> crearLaberinto2HabitacionesFM:unFM [
 	puerta lado1:hab1.
 	puerta lado2:hab2.
 	
-	hab1 sur:puerta.
-	hab2 norte:puerta.
+	hab1 forma sur:puerta.
+	hab2 forma norte:puerta.
 	
 	hab1 ponerEnOr: unFM fabricarSur elemento:puerta.
 	hab2 ponerEnOr: unFM fabricarNorte elemento:puerta.
@@ -422,6 +428,18 @@ Juego >> person [
 Juego >> person: anObject [
 
 	person := anObject
+]
+
+{ #category : 'accessing' }
+Juego >> prototipo [
+
+	^ prototipo
+]
+
+{ #category : 'accessing' }
+Juego >> prototipo: anObject [
+
+	prototipo := anObject
 ]
 
 { #category : 'gestion bichos' }

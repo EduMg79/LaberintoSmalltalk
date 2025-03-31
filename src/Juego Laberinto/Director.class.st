@@ -35,6 +35,12 @@ Director >> dict: anObject [
 ]
 
 { #category : 'factory method' }
+Director >> fabricarBichos [
+(self dict at:'bichos' ifAbsent:[^nil]) do:[:each |
+		self builder fabricarBichoModo: (each at:'modo') posicion:(each at:'posicion')]. 
+]
+
+{ #category : 'factory method' }
 Director >> fabricarJuego [ 
 self builder fabricarJuego .
 ]
@@ -89,6 +95,6 @@ self leerArchivo:unArchivo.
 	self iniBuilder.
 	self fabricarLaberinto .
 	self fabricarJuego .
-	self fabricarBomba .
+	self fabricarBichos.
 	
 ]

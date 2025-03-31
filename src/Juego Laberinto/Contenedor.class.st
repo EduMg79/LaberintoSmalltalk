@@ -7,7 +7,8 @@ Class {
 	#superclass : 'ElementoMapa',
 	#instVars : [
 		'hijos',
-		'forma'
+		'forma',
+		'num'
 	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
@@ -88,17 +89,30 @@ Contenedor >> irAlSur:alguien [
  self forma irAlSur:alguien .
 ]
 
+{ #category : 'accessing' }
+Contenedor >> num [
+
+	^ num
+]
+
+{ #category : 'accessing' }
+Contenedor >> num: anObject [
+
+	num := anObject
+]
+
 { #category : 'gestion orientaciones' }
 Contenedor >> obtenerElementoOr:unaOr [
-^unaOr obtenerElementoOrEn: self.
+^self forma obtenerElementoOr: unaOr.
 ]
 
 { #category : 'gestion orientaciones' }
 Contenedor >> obtenerOrientacion [ 
-|ind|
-"self orientaciones size"
-ind:=(1 to: self orientaciones size) atRandom .
-^self orientaciones at: ind.
+"obtner orientacion aleatoria"
+	"| ind |
+	ind:=(1 to:self orientaciones size) atRandom.
+	^self orientaciones at:ind."
+	^self forma obtenerOrientacion.
 ]
 
 { #category : 'as yet unclassified' }

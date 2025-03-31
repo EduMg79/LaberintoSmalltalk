@@ -16,6 +16,11 @@ self subclassResponsibility .
 ]
 
 { #category : 'gestion orientaciones' }
+Orientacion >> obtenerElementoOrEn:unaForma [
+self subclassResponsibility .
+]
+
+{ #category : 'gestion orientaciones' }
 Orientacion >> ponerElemento:unEM en:unContenedor [
 	self subclassResponsibility.
 ]

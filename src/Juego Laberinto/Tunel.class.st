@@ -11,7 +11,8 @@ Class {
 
 { #category : 'entrar' }
 Tunel >> entrar:alguien [
- "el personaje crea un laberinto y alguien intenta entrar con el".
+      self laberinto: alguien clonarLaberinto.
+self laberinto entrar: alguien.
 ]
 
 { #category : 'accessing' }

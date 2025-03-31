@@ -44,14 +44,14 @@ Forma >> obtenerElementoOr:unaOR [
 	^unaOR obtenerElementoOrEn:self.
 ]
 
-{ #category : 'accessing' }
+{ #category : 'gestion orientaciones' }
 Forma >> obtenerOrientacion [ 
 	| ind |
 	ind:=(1 to:self orientaciones size) atRandom.
 	^self orientaciones at:ind.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gestion orientaciones' }
 Forma >> obtenerOrientaciones [ 
  ^self orientaciones.
 ]

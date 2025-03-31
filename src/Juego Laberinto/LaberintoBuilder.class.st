@@ -39,13 +39,16 @@ LaberintoBuilder >> fabricarBichoAgresivo [
 ]
 
 { #category : 'as yet unclassified' }
-LaberintoBuilder >> fabricarBichoModo:unModo posicion: unNum [
-|hab bicho|
-hab:= self laberinto obtenerHabitacion: unNum .
-bicho:= self perform: ('FabricarBicho',unModo ) asSymbol .
-hab entrar: bicho.
-self juego agregarBicho: bicho.
-"strModo='Agresivo' ifTrue:{bicho:=self fabricarBichoAgresivo:hab}" 
+LaberintoBuilder >> fabricarBichoModo:strModo posicion: unNum [
+| hab bicho |
+	hab:=self laberinto obtenerHabitacion:unNum.
+	
+	"strModo='Agresivo' ifTrue:[bicho:=self fabricarBichoAgresivo:hab]"
+	
+	bicho:=self perform:('fabricarBicho',strModo) asSymbol.
+	hab entrar:bicho.
+	
+	self juego agregarBicho: bicho.
 ]
 
 { #category : 'fm bicho' }
@@ -80,20 +83,16 @@ forma agregarOrientacion: self fabricarNorte; agregarOrientacion: self fabricarS
 
 { #category : 'factory method' }
 LaberintoBuilder >> fabricarHabitacion:unNum [
-|hab|
-
-
-	hab:=Habitacion new num:unNum.
-	"hab agregarOrientacion: self fabricarNorte; agregarOrientacion: self fabricarSur; agregarOrientacion:self fabricarEste; agregarOrientacion:self fabricarOeste."
+	|hab|
+	hab:=Habitacion new.
+	hab num:unNum.
+	hab forma:self fabricarForma.
+	"hab agregarOrientacion: self fabricarNorte; agregarOrientacion:self fabricarSur; agregarOrientacion:self fabricarEste; agregarOrientacion:self fabricarOeste."
 	
 	hab obtenerOrientaciones do:[:each | hab ponerEnOr:each elemento:self fabricarPared].
-	hab forma: self fabricarForma.
-	hab este:self fabricarPared.
-	hab oeste:self fabricarPared.
-	hab norte:self fabricarPared.
-	hab sur:self fabricarPared.
 	
 	self laberinto agregarHabitacion: hab.
+	
 	^hab
 
 ]
@@ -101,7 +100,8 @@ LaberintoBuilder >> fabricarHabitacion:unNum [
 { #category : 'factory method' }
 LaberintoBuilder >> fabricarJuego [ 
 self juego: Juego new.
-self juego laberinto: self laberinto .
+self juego prototipo: self laberinto .
+self juego laberinto: self juego prototipo veryDeepCopy . "self juego clonarLaberinto"
 
 ]
 
