@@ -41,7 +41,7 @@ LaberintoBuilder >> fabricarBichoAgresivo [
 { #category : 'as yet unclassified' }
 LaberintoBuilder >> fabricarBichoModo:strModo posicion: unNum [
 | hab bicho |
-	hab:=self laberinto obtenerHabitacion:unNum.
+	hab:=self juego obtenerHabitacion:unNum.
 	
 	"strModo='Agresivo' ifTrue:[bicho:=self fabricarBichoAgresivo:hab]"
 	

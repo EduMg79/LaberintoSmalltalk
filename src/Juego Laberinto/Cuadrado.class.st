@@ -35,6 +35,11 @@ Cuadrado >> irAlNorte:alguien [
 ]
 
 { #category : 'as yet unclassified' }
+Cuadrado >> irAlOEste:alguien [
+ self oeste entrar: alguien.
+]
+
+{ #category : 'as yet unclassified' }
 Cuadrado >> irAlOeste:alguien [
  self oeste entrar: alguien.
 ]

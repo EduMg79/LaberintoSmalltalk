@@ -39,6 +39,11 @@ Personaje >> irAlSur [
    self posicion irAlSur: self.
 ]
 
+{ #category : 'as yet unclassified' }
+Personaje >> juegoClonarLaberinto [
+^self juego clonarLaberinto .
+]
+
 { #category : 'accessing' }
 Personaje >> nombre [
 

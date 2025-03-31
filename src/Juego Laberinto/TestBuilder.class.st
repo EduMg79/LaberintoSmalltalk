@@ -143,7 +143,7 @@ self juego agregarPersonaje:'Surmania'.
 
 { #category : 'tests' }
 TestBuilder >> testBichoAtaca [ 
-	|hab1 bicho person|
+	|hab1 bicho person vidas|
 	hab1:=self juego obtenerHabitacion:1.
 	bicho:=self juego bichos at:1.
 	person:= self juego person.
@@ -153,7 +153,8 @@ TestBuilder >> testBichoAtaca [
 	
 	hab1 entrar:bicho.
 	hab1 entrar:person.
-	
+	self assert: (bicho posicion = (person posicion)).
+	vidas:=person vidas.
 	bicho atacar.
 	
 	self assert: person vidas equals:0.
@@ -183,4 +184,21 @@ hab:=self juego obtenerHabitacion: 1.
 self assert: self juego person posicion equals: hab.
 self assert: self juego person vidas equals:5.
 
+]
+
+{ #category : 'tests' }
+TestBuilder >> testPersonajeAtaca [ 
+	| hab1 bicho person |
+	hab1:=juego obtenerHabitacion:1.
+	bicho:=juego bichos at:1.
+	person:=juego person.
+	
+	self assert:bicho notNil.
+	self assert:person notNil.
+	
+	hab1 entrar:bicho.
+	hab1 entrar:person.
+	person atacar.
+	
+	self assert:bicho vidas equals:2.
 ]

@@ -34,9 +34,9 @@ Contenedor >> eliminarHijo:unEM [
 
 { #category : 'caminar' }
 Contenedor >> entrar:alguien [
-Transcript show:alguien printString; nextPutAll: ' esta en'; nextPutAll: self printString ;cr.
-	
-	alguien posicion:self.
+Transcript show: alguien printString ;  nextPutAll: ' esta en ' ; nextPutAll: self printString ;cr.
+	alguien posicion: self.
+	" buscar elemento (tunel)"
 ]
 
 { #category : 'accessing' }

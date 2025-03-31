@@ -30,7 +30,7 @@ Forma >> irAlNorte:alguien [
 ]
 
 { #category : 'as yet unclassified' }
-Forma >> irAlOeste:alguien [
+Forma >> irAlOEste: alguien [
 self subclassResponsibility .
 ]
 

@@ -11,7 +11,7 @@ Class {
 
 { #category : 'entrar' }
 Tunel >> entrar:alguien [
-      self laberinto: alguien clonarLaberinto.
+      self laberinto: alguien juegoClonarLaberinto.
 self laberinto entrar: alguien.
 ]
 

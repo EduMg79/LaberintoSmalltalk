@@ -69,8 +69,8 @@ self laberinto cerrarPuertas .
 ]
 
 { #category : 'as yet unclassified' }
-Juego >> clonarLaberinto [
- 
+Juego >> clonarLaberinto [ 
+^self prototipo veryDeepCopy .
 ]
 
 { #category : 'laberinto' }
