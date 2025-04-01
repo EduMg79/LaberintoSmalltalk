@@ -15,6 +15,17 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'as yet unclassified' }
+Ente >> buscarTunel [
+" self subclassResponsibility."
+"nada"
+"Comportamiento predetermindado"
+]
+
+{ #category : 'as yet unclassified' }
+Ente >> crearNuevoLaberinto:unTunel [
+]
+
 { #category : 'ataques' }
 Ente >> esAtacadoPor: alguien [
 
@@ -53,6 +64,11 @@ Ente >> juego [
 Ente >> juego: anObject [
 
 	juego := anObject
+]
+
+{ #category : 'as yet unclassified' }
+Ente >> juegoClonarLaberinto [
+^self juego clonarLaberinto .
 ]
 
 { #category : 'accessing' }

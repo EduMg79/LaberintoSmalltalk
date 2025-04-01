@@ -17,5 +17,5 @@ Habitacion >> esHabitacion [
 
 { #category : 'printing' }
 Habitacion >> printOn: aStream [
-aStream nextPutAll: 'hab'.
+aStream nextPutAll:'Hab' ; nextPutAll:self num asString
 ]

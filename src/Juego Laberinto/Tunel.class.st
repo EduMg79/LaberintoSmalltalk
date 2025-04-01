@@ -11,8 +11,12 @@ Class {
 
 { #category : 'entrar' }
 Tunel >> entrar:alguien [
-      self laberinto: alguien juegoClonarLaberinto.
-self laberinto entrar: alguien.
+
+self laberinto ifNil: [  
+	alguien crearNuevoLaberinto: self.
+] ifNotNil: [ 
+Transcript show: alguien printString ; nextPutAll: 'entra en un nuevo Laberinto';cr.
+self laberinto entrar: alguien].
 ]
 
 { #category : 'accessing' }
