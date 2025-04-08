@@ -29,7 +29,7 @@ self forma agregarOrientacion: unaOr.
 
 { #category : 'gestion hijos' }
 Contenedor >> eliminarHijo:unEM [
- self hijos remove: unEM ifAbsent:{"no eciste ese objeto"}.
+ self hijos remove: unEM ifAbsent:{"no existe ese objeto"}.
 ]
 
 { #category : 'caminar' }
@@ -65,6 +65,7 @@ Contenedor >> hijos: anObject [
 
 { #category : 'initialization' }
 Contenedor >> initialize [
+super initialize.
 hijos :=OrderedCollection new.
 
 ]

@@ -137,7 +137,7 @@ abOr1 :=self perform:('fabricar',or1) asSymbol. "fabricar+Norte => fabricarNorte
 pt:= Puerta new.
 pt lado1: hab1.
 pt lado2: hab2.
-
+pt agregarComandos: { Abrir new receptor: pt}.
 hab1 ponerEnOr: abOr1 elemento: pt.
 hab2 ponerEnOr: abOr2 elemento: pt.
 ]
@@ -153,6 +153,7 @@ LaberintoBuilder >> fabricarTunelEn:unCont [
 	|tunel|
 	
 	tunel:=Tunel new.
+	tunel agregarComandos: (Entrar new receptor:tunel).
 	unCont agregarHijo:tunel.
 ]
 
