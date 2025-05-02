@@ -13,6 +13,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'as yet unclassified' }
+ElementoMapa >> aceptar: unvisitor [
+self subclassResponsibility .
+]
+
 { #category : 'initialize' }
 ElementoMapa >> agregarComandos:unComando [
 self comandos add: unComando.

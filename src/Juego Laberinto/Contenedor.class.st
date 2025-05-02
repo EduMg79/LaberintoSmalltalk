@@ -15,6 +15,13 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'as yet unclassified' }
+Contenedor >> aceptar: unVisitor [
+    self visitarContenedor:unVisitor.
+	self hijos do:[:each | each recorrer:unVisitor].	
+	"self obtenerOrientaciones do:[:each | each aceptar:unVisitor contenedor:self forma]."
+]
+
 { #category : 'gestion hijos' }
 Contenedor >> agregarHijo:unEM [
 unEM padre: self.

@@ -5,7 +5,7 @@ Class {
 	#name : 'Puerta',
 	#superclass : 'ElementoMapa',
 	#instVars : [
-		'abierta',
+		'estado',
 		'lado1',
 		'lado2'
 	],
@@ -14,43 +14,27 @@ Class {
 	#tag : 'Laberinto'
 }
 
-{ #category : 'accessing' }
-Puerta >> abierta [
+{ #category : 'as yet unclassified' }
+Puerta >> abrir [  
 
-	^ abierta
+	"self abierta:true.
+	Transcript show: 'Puerta abierta';cr."
+	self estado abrir:self.
 ]
 
-{ #category : 'accessing' }
-Puerta >> abierta: anObject [
+{ #category : 'as yet unclassified' }
+Puerta >> cerrar [ 
 
-	abierta := anObject
-]
-
-{ #category : 'caminar' }
-Puerta >> abrir [
-abierta:=true.
-
-
-
-]
-
-{ #category : 'caminar' }
-Puerta >> cerrar [
-abierta:=false.
+	"self abierta:false.
+	Transcript show: 'Puerta cerrada';cr."
+	self estado: Cerrada new.
 ]
 
 { #category : 'caminar' }
 Puerta >> entrar:alguien [
 
-	self abierta 
-	ifTrue:[
-		alguien posicion = self lado1 ifTrue:[
-			self lado2 entrar:alguien
-			] ifFalse:[
-			self lado1 entrar:alguien
-			]
-		]
-	ifFalse:[Transcript show:'Te has chocado con la puerta';cr.].
+self estado entrar:alguien puerta:self.
+	
 ]
 
 { #category : 'consulta' }
@@ -60,12 +44,26 @@ Puerta >> esPuerta [
 
 { #category : 'as yet unclassified' }
 Puerta >> estaAbierta [
- ^self abierta.
+ ^self estado estaAbierta
 ]
 
-{ #category : 'initialization' }
+{ #category : 'accessing' }
+Puerta >> estado [
+
+	^ estado
+]
+
+{ #category : 'accessing' }
+Puerta >> estado: anObject [
+
+	estado := anObject
+]
+
+{ #category : 'initialize' }
 Puerta >> initialize [ 
- abierta:=false.
+	super initialize.
+	estado:=Cerrada new.
+	"self abierta:false"
 ]
 
 { #category : 'accessing' }
@@ -97,4 +95,13 @@ Puerta >> printOn: aStream [
 aStream nextPutAll: 'Puerta'; nextPutAll: self lado1 num asString ; nextPutAll: '-' ; nextPutAll: self lado2 num asString .
 self abierta ifTrue: [ aStream nextPutAll:'abierta'  ].
 self abierta ifFalse: [ aStream nextPutAll: 'serrada' ].
+]
+
+{ #category : 'caminar' }
+Puerta >> puedeEntrar:alguien [ 
+		alguien posicion = self lado1 ifTrue:[
+			self lado2 entrar:alguien
+			] ifFalse:[
+			self lado1 entrar:alguien
+			]
 ]

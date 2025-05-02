@@ -9,6 +9,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'as yet unclassified' }
+Tunel >> aceptar:unVisitor [
+unVisitor visitarTunel:self.
+]
+
 { #category : 'entrar' }
 Tunel >> entrar:alguien [
 

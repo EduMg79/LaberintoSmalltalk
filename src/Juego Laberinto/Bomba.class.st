@@ -12,6 +12,11 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'as yet unclassified' }
+Bomba >> aceptar:unVisitor [
+unVisitor visitarBomba: self
+]
+
 { #category : 'accessing' }
 Bomba >> activa [
 
