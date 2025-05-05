@@ -34,6 +34,18 @@ Ente >> buscarTunel [
 ]
 
 { #category : 'as yet unclassified' }
+Ente >> calcularPosicionDesde: unaForma [
+	| unPunto |
+	unPunto := (unaForma punto x+1) @ (unaForma punto y).
+	unaForma este calcularPosicionDesde: unaForma en: unPunto
+"el resto de orientaciones es similar:"
+"norte x y-1"
+"sur  x y+1"
+"oeste x-1 y"
+
+]
+
+{ #category : 'as yet unclassified' }
 Ente >> crearNuevoLaberinto:unTunel [
 ]
 

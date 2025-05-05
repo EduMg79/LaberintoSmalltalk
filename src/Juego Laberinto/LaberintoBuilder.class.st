@@ -87,11 +87,13 @@ LaberintoBuilder >> fabricarHabitacion:unNum [
 	hab:=Habitacion new.
 	hab num:unNum.
 	hab forma:self fabricarForma.
+	hab forma num:unNum.
 	"hab agregarOrientacion: self fabricarNorte; agregarOrientacion:self fabricarSur; agregarOrientacion:self fabricarEste; agregarOrientacion:self fabricarOeste."
 	
 	hab obtenerOrientaciones do:[:each | hab ponerEnOr:each elemento:self fabricarPared].
 	
-	self laberinto agregarHabitacion: hab.
+	
+	self laberinto agregarHabitacion:hab.
 	
 	^hab
 

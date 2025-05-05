@@ -22,6 +22,7 @@ Forma >> calcularPosicion [
 	self orientaciones do:[:or |
 		or calcularPosicionDesde:self ]
 
+
 ]
 
 { #category : 'initialization' }

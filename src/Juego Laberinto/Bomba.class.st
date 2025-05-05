@@ -29,6 +29,11 @@ Bomba >> activa: anObject [
 	activa := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+Bomba >> activar [
+ activa:=true
+]
+
 { #category : 'accessing' }
 Bomba >> entrar:alguien [
 self activa ifTrue: [Transcript show: alguien printString ; nextPutAll: 'Sa  chocado con una bomba'; cr]

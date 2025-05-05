@@ -19,6 +19,15 @@ Class {
 	#tag : 'Vista'
 }
 
+{ #category : 'as yet unclassified' }
+LaberintoGui >> agregarPersonaje:unaCadena [
+	self juego agregarPersonaje: unaCadena.
+	self person:self juego person.
+	self person addDependent: self. "attach del Observer sobre el sujeto"
+
+
+]
+
 { #category : 'accessing' }
 LaberintoGui >> alto [
 
@@ -43,6 +52,23 @@ LaberintoGui >> ancho: anObject [
 	ancho := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+LaberintoGui >> asignarPuntosReales [
+
+	| x y origen|
+	origen:=70@10.
+	self juego laberinto hijos do: 
+			[:each |
+			x := origen x + (each punto x * self ancho).
+			y := origen y + (each punto y * self alto).
+			each punto: x @ y.
+			each extent: self ancho @ self alto.
+			
+			"each hijos do:[:hijo | hijo asignarPuntosReales:each]"
+		]
+
+]
+
 { #category : 'accessing' }
 LaberintoGui >> bichosM [
 
@@ -53,6 +79,26 @@ LaberintoGui >> bichosM [
 LaberintoGui >> bichosM: anObject [
 
 	bichosM := anObject
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> calcularDimensiones [
+
+	"Este rectangulo delimita el área sobre la que se dibuja el laberinto: 156@44 extent:810@632"
+
+	| maxX maxY |
+	maxX := 0.
+	maxY := 0.
+	"self origen:158@46."
+	self juego laberinto hijos do: [ :each | 
+		maxX := maxX max: each punto x.
+		maxY := maxY max: each punto y ].
+	maxX := maxX + 1.
+	maxY := maxY + 1.
+	self ancho: (1050 / maxX) rounded.
+	self alto: (600 / maxY) rounded
+
+
 ]
 
 { #category : 'as yet unclassified' }
@@ -68,15 +114,38 @@ LaberintoGui >> calcularPosicion [
 ]
 
 { #category : 'as yet unclassified' }
+LaberintoGui >> dibujarContenedorRectangular: unaForma escala:unInt [
+
+	| rec unPunto an al |
+	unPunto := unaForma punto.
+	an := (unaForma extent x)/unInt.
+	al := (unaForma extent y)/unInt.
+	rec:=BorderedMorph new extent:an@al.
+	rec color:Color white.
+	rec borderWidth: 2.
+	self addMorph:rec.
+	rec position:self position+unPunto.
+
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> dibujarLaberinto [
+	self juego ifNil: [ ^ self ].
+	self juego laberinto aceptar: self. "self juego dibujar:self"
+
+
+]
+
+{ #category : 'as yet unclassified' }
 LaberintoGui >> iniciarJuego [
-	|director|
-		director:=Director new procesar:'C:\Users\Usuario\Desktop\3º\laberinto4hab4bichos.json'.
+	|director ruta|
+		ruta:= 'C:\Users\Usuario\Desktop\3º\'.
+		director:=Director new procesar:ruta, 'laberinto4hab4bichos.json'.
 		self juego:director obtenerJuego.
 		self mostrarLaberinto.
 		win:=self openInWindowLabeled:'LaberintoGUI'.
 		self agregarPersonaje:'Pepín'. "el nombre se podría introducir desde la interfaz"
 		self dibujarLaberinto.
-
 ]
 
 { #category : 'accessing' }
@@ -136,6 +205,20 @@ LaberintoGui >> mostrarLaberinto [
 
 ]
 
+{ #category : 'as yet unclassified' }
+LaberintoGui >> normalizar [
+
+	| minX minY unPunto |
+	minX := 0.
+	minY := 0.
+	self juego laberinto hijos do: [ :each |
+		minX := minX min: each punto x.
+		minY := minY min: each punto y ].
+	self juego laberinto hijos do: [ :each |
+		unPunto := each punto.
+		each punto: unPunto x + minX abs @ (unPunto y + minY abs) ]
+]
+
 { #category : 'accessing' }
 LaberintoGui >> person [
 
@@ -170,6 +253,24 @@ LaberintoGui >> vidasM [
 LaberintoGui >> vidasM: anObject [
 
 	vidasM := anObject
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> visitarHabitacion:unaHab [
+	self dibujarContenedorRectangular: unaHab forma escala:1.
+
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> visitarPared: unaPared [
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> visitarPuerta: unaPuerta [
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> visitarTunel: unTunel [
 ]
 
 { #category : 'accessing' }
