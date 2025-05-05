@@ -2,7 +2,10 @@ Class {
 	#name : 'Forma',
 	#superclass : 'Object',
 	#instVars : [
-		'orientaciones'
+		'orientaciones',
+		'punto',
+		'extend',
+		'num'
 	],
 	#category : 'Juego Laberinto-Laberinto',
 	#package : 'Juego Laberinto',
@@ -12,6 +15,13 @@ Class {
 { #category : 'gestion orientaciones' }
 Forma >> agregarOrientacion:unaOr [ 
 	self orientaciones add:unaOr.
+]
+
+{ #category : 'as yet unclassified' }
+Forma >> calcularPosicion [
+	self orientaciones do:[:or |
+		or calcularPosicionDesde:self ]
+
 ]
 
 { #category : 'initialization' }

@@ -10,6 +10,13 @@ Class {
 	#tag : 'Laberinto'
 }
 
+{ #category : 'as yet unclassified' }
+Orientacion >> calcularPosicionDesde:unaForma [
+	self subclassResponsibility 
+
+
+]
+
 { #category : 'gestion orientaciones' }
 Orientacion >> caminar:unBicho [ 
 self subclassResponsibility .
