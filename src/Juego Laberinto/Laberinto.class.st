@@ -17,7 +17,7 @@ self recorrer: [:each | each esPuerta ifTrue: [ each abrir ]] .
 
 { #category : 'recorrido' }
 Laberinto >> aceptar:unVisitor [
-self hijos do:[:each | each recorrer:unVisitor].
+self hijos do:[:each | each aceptar: unVisitor].
 ]
 
 { #category : 'habitaciones' }

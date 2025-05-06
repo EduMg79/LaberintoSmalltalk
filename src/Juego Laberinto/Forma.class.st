@@ -25,6 +25,18 @@ Forma >> calcularPosicion [
 
 ]
 
+{ #category : 'accessing' }
+Forma >> extend [
+
+	^ extend
+]
+
+{ #category : 'accessing' }
+Forma >> extend: anObject [
+
+	extend := anObject
+]
+
 { #category : 'initialization' }
 Forma >> initialize [ 
 	orientaciones:=OrderedCollection new.
@@ -50,16 +62,29 @@ Forma >> irAlSur:alguien [
 self subclassResponsibility .
 ]
 
+{ #category : 'accessing' }
+Forma >> num [
+
+	^ num
+]
+
+{ #category : 'accessing' }
+Forma >> num: anObject [
+
+	num := anObject
+]
+
 { #category : 'gestion orientaciones' }
 Forma >> obtenerElementoOr:unaOR [ 
 	^unaOR obtenerElementoOrEn:self.
 ]
 
 { #category : 'gestion orientaciones' }
-Forma >> obtenerOrientacion [ 
+Forma >> obtenerOrientacion [
 	| ind |
 	ind:=(1 to:self orientaciones size) atRandom.
 	^self orientaciones at:ind.
+
 ]
 
 { #category : 'gestion orientaciones' }
@@ -82,4 +107,16 @@ Forma >> orientaciones: anObject [
 { #category : 'gestion orientaciones' }
 Forma >> ponerEnOr: unaOr elemento: unEM [
 unaOr ponerElemento: unEM en: self. 
+]
+
+{ #category : 'accessing' }
+Forma >> punto [
+
+	^ punto
+]
+
+{ #category : 'accessing' }
+Forma >> punto: anObject [
+
+	punto := anObject
 ]

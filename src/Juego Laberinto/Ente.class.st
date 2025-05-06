@@ -131,6 +131,7 @@ Ente >> posicion [
 Ente >> posicion: anObject [
 
 	posicion := anObject
+	self changed:#posicion.
 ]
 
 { #category : 'ataques' }
@@ -148,4 +149,7 @@ Ente >> vidas [
 Ente >> vidas: anObject [
 
 	vidas := anObject
+	self changed:#vidas.
+
+
 ]

@@ -113,7 +113,7 @@ LaberintoGui >> calcularPosicion [
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'updating' }
 LaberintoGui >> dibujarContenedorRectangular: unaForma escala:unInt [
 
 	| rec unPunto an al |
@@ -126,12 +126,38 @@ LaberintoGui >> dibujarContenedorRectangular: unaForma escala:unInt [
 	self addMorph:rec.
 	rec position:self position+unPunto.
 
+
+
 ]
 
 { #category : 'as yet unclassified' }
 LaberintoGui >> dibujarLaberinto [
 	self juego ifNil: [ ^ self ].
 	self juego laberinto aceptar: self. "self juego dibujar:self"
+
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> handlesKeyDown: anEvent [
+	^ true
+
+
+
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> handlesMouseDown: anEvent [
+	^true
+
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> handlesMouseOver: anEvent [
+^ true
+
 
 
 ]
@@ -144,8 +170,19 @@ LaberintoGui >> iniciarJuego [
 		self juego:director obtenerJuego.
 		self mostrarLaberinto.
 		win:=self openInWindowLabeled:'LaberintoGUI'.
-		self agregarPersonaje:'Pepín'. "el nombre se podría introducir desde la interfaz"
+		self agregarPersonaje:'Pepín'. 
 		self dibujarLaberinto.
+]
+
+{ #category : 'updating' }
+LaberintoGui >> initialize [ 
+	super initialize.
+	self extent: 1150@900.
+	self borderWidth: 2; useRoundedCorners.
+	self color:Color white.
+	bichosM:=Dictionary new.
+
+
 ]
 
 { #category : 'accessing' }
@@ -158,6 +195,22 @@ LaberintoGui >> juego [
 LaberintoGui >> juego: anObject [
 
 	juego := anObject
+]
+
+{ #category : 'updating' }
+LaberintoGui >> keyDown: anEvent [
+	| key |
+	key := anEvent key.
+	Transcript show:key value asString;cr.
+	key = KeyboardKey up ifTrue: [ self person irAlNorte ].
+	key = KeyboardKey down ifTrue: [ self person irAlSur ].
+	key = KeyboardKey right ifTrue: [ self person irAlEste ].
+	key = KeyboardKey left ifTrue: [ self person irAlOeste ].
+	key value = 65 ifTrue:[self person atacar].
+
+
+
+
 ]
 
 { #category : 'accessing' }
@@ -197,11 +250,102 @@ LaberintoGui >> mLB: anObject [
 ]
 
 { #category : 'as yet unclassified' }
+LaberintoGui >> mostrarAbrirPuertas [
+	mAP:=SimpleButtonMorph new target:self; label: 'Abrir'; actionSelector: #abrirPuertas.
+	self addMorph: mAP.
+	mAP position:self position +(5@70).
+
+
+
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> mostrarDetenerBichos [
+	
+	mLB:=SimpleButtonMorph new target:self; label: 'Detener'; actionSelector: #terminarBichos.
+	self addMorph: self mLB.
+	self mLB position:self position +(5@160).
+
+]
+
+{ #category : 'as yet unclassified' }
 LaberintoGui >> mostrarLaberinto [
 	self calcularPosicion. "calcula la posición relativa de las habitaciones respecto de la hab1"
 	self normalizar. "traslación de todo el laberinto para que no haya coordenadas negativas"
 	self calcularDimensiones. "repartir el ancho y alto del canvas entre las habitaciones"
 	self asignarPuntosReales. "asigna las posiciones a cada contenedor (forma)"
+
+]
+
+{ #category : 'as yet unclassified' }
+LaberintoGui >> mostrarLanzarBichos [
+	
+	mLB:=SimpleButtonMorph new target:self; label: 'Iniciar'; actionSelector: #lanzarBichos.
+	self addMorph: self mLB.
+	self mLB position:self position +(5@130).
+
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> mostrarPersonaje [
+
+	| unCont an al a b c d rec |
+	self juego person ifNil: [ ^ self ].
+	unCont := self juego person posicion.
+	an := unCont extent x.
+	al := unCont extent y.
+	a := unCont punto x + (an // 2).
+	b := unCont punto y + (al // 2).
+	c := an // 9.
+	d := al // 8.
+	self personM ifNil:[
+		rec := BorderedMorph new extent: c @ d.
+		rec borderWidth: 2.
+		rec color: Color black.
+		self addMorph: rec.
+		self personM:rec.
+		"self personM openInWorld."
+		].
+	self personM position: self position+ (a @ b).
+
+
+
+
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> mostrarVidasPersonaje [
+	|tM|
+	self vidasM ifNil:[
+		tM := TextMorph new.
+		tM borderWidth: 1.
+		tM backgroundColor:Color green.
+		tM color:Color black.
+		"tM autoFit: true."
+		tM contents: ' ',self person vidas asString,' '. 
+		self addMorph: tM.
+		tM position:self position +(5@40).
+		self vidasM:tM.
+	].
+	self vidasM contents:' ',self person vidas asString,' '.
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> mouseEnter: anEvent [
+	anEvent hand newKeyboardFocus: self
+
+
+
+]
+
+{ #category : 'updating' }
+LaberintoGui >> mouseLeave: anEvent [
+	anEvent hand releaseKeyboardFocus: self
+
+
 
 ]
 
@@ -241,6 +385,15 @@ LaberintoGui >> personM [
 LaberintoGui >> personM: anObject [
 
 	personM := anObject
+]
+
+{ #category : 'updating' }
+LaberintoGui >> update:unObject [
+
+	self mostrarVidasPersonaje.
+	self mostrarPersonaje.
+	self mostrarBichos.
+
 ]
 
 { #category : 'accessing' }
